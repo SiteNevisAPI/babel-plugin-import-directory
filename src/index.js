@@ -69,11 +69,10 @@ export default function dir (babel) {
 
         const _files = getFiles(checkPath, state.opts.exts, [], isRecursive)
         const files = _files.map((file) =>
-          [file, nameTransform(file[file.length - 1]), path.scope.generateUidIdentifier(file[file.length - 1])]
+           [file,nameTransform(state.opts.withPath ? file.join("_") : file[file.length - 1]), path.scope.generateUidIdentifier(state.opts.withPath ? file.join("_") : file[file.length - 1])] 
         )
 
         if (!files.length) { return }
-
         const imports = files.map(([file, fileName, fileUid]) =>
           t.importDeclaration(
             [t.importNamespaceSpecifier(fileUid)],
