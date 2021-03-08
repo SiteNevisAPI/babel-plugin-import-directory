@@ -11,8 +11,8 @@ const buildRequire = template(`for (let key in IMPORTED) {
 const toCamelCase = (name) =>
   name.replace(/([-_.]\w)/g, (_, $1) => $1[1].toUpperCase())
 
-const toSnakeCase = (name) =>
-  name.replace(/([-.A-Z])/g, (_, $1) => '_' + ($1 === '.' || $1 === '-' ? '' : $1.toLowerCase()))
+const toSnakeCase = (name) => name
+//  name.replace(/([-.A-Z])/g, (_, $1) => '_' + ($1 === '.' || $1 === '-' ? '' : $1.toLowerCase()))
 
 const getFiles = (parent, exts = ['.js', '.es6', '.es', '.jsx'], files = [], recursive = false, path = []) => {
   let r = _fs.readdirSync(parent)
